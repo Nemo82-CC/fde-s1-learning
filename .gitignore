@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtualenv
+venv/
+.env
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# 数据与日志（不入 git）
+data/raw/
+data/*.csv
+data/*.xlsx
+logs/*.log
+
+# 系统
+.DS_Store
+Thumbs.db
