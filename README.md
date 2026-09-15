@@ -26,6 +26,6 @@
 
 ## 如何开始
 
-1. 进入本目录：`cd .workbuddy\projects\fde_s1`
+1. 进入本目录：`cd 04_学习工程\fde_s1`
 2. 用 VS Code 打开：`code .`
 3. 第一周任务：从 `week01_python_basics/hello.py` 开始
