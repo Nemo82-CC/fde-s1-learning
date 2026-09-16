@@ -25,8 +25,8 @@ print(f"前 2 个：{projects[:2]}")            # 切片，同样「含头不含
 projects.append("A012 数智安防试点")         # 末尾追加
 print(f"追加一个后：{projects}")
 
-projects.insert(0, "A001 立项")              # 插到最前面
-print(f"插到第 1 位后：{projects}")
+projects.insert(0, "A001 立项")              # 插到最前面。insert 的数字不是「插到第几个之后」，而是「新元素要抢占的座位号」
+print(f"插到第 1 位后：{projects}")          # 想插到「最后」别用负数：直接 append(x)
 
 projects.remove("A001 立项")                 # 按值删除
 print(f"删掉 A001 后：{projects}")
@@ -136,13 +136,22 @@ print("练习开始，共 5 题")
 products = ["智慧校园", "职教云", "智慧高校"]
 
 # 你的代码 ↓
+products.append("教育大模型")
+print(f"追加 教育大模型后：{products}")
 
+products.remove("职教云")
+print(f"删除 职教云后：{products}")
+
+print(f"列表长度：{len(products)}")
+print(f"完整内容：{products}")
 
 # 【2】从字典里取「金额」，如果没填就显示「暂未确定」（用 get，不要用中括号）。
 
 budget = {"编号": "A011", "事项": "北湖项目第 2 批报账"}
 
 # 你的代码 ↓
+print(f"取[金额]并反馈结果：{budget.get('金额','暂未确定')}")
+
 
 
 # 【3】用 for 循环打印下面 ledger2 每一行的「编号 + 状态」，
@@ -155,18 +164,29 @@ ledger2 = [
 ]
 
 # 你的代码 ↓
+for row in ledger2:
+    print(f"{row['编号']} ->{row['状态']}")
+
 
 
 # 【4】把下面列表里的重复项去掉，只保留不重复的，并打印出去重后的个数。
 tags = ["智慧校园", "职教云", "智慧校园", "教育大模型", "职教云"]
 
 # 你的代码 ↓
+print(f"去重后：{set(tags)}")
+print(f"去重后的个数：{len(set(tags))}")
+
 
 
 # 【5】从 ledger2 中筛选出状态为「进行中」的记录，打印这些记录的编号。
 #      提示：可以先用 for + if 收集到一个新列表，再打印。
 
 # 你的代码 ↓
+for row in ledger2:
+    if row["状态"] == "进行中":
+        print(f"状态为进行中的编号：{row['编号']}") 
+
+
 
 
 print("练习结束")
