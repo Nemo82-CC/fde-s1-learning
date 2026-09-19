@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""03_control_flow.py | S1 第 1 周 · 第 3 天（2026-09-17 周四晚）
+"""03_control_flow.py | S1 第 1 周 · 第 3 天（原定 09-17 周四，09-17 加班顺延，实际 09-19 周六）
 
 主题：if 判断 / for 循环 / while 循环 / break & continue / 异常处理
 
@@ -52,8 +52,8 @@ for i in range(len(ledger)):
 
 # 更 Python 的写法：enumerate 直接拿到序号和内容
 print("--- enumerate 写法 ---")
-for i, row in enumerate(ledger, start=1):
-    print(f"  {i}. {row['编号']}")
+for i, row in enumerate(ledger, start=1):        #“for i,row”表明的是「每一轮循环要拿到两个东西：序号 i 和内容 row」；“start=1”表示序号从 1 开始（默认是 0）。
+    print(f" {i}. {row['编号']}")
 
 # 只遍历字典的键
 print("--- 遍历字典 ---")
@@ -64,7 +64,7 @@ for k, v in ledger[0].items():
 print("=" * 50)
 print("【3】for + if：筛选（最常用的组合）")
 
-doing = []
+doing = []         ##就是「先建一个空列表」,[]表示空列表;doing 这个名字必须在循环之前就建好
 for row in ledger:
     if row["状态"] == "进行中":
         doing.append(row["编号"])
@@ -139,6 +139,19 @@ print("练习开始，共 5 题")
 test_amounts = [2000000, 50000, 3000]
 
 # 你的代码 ↓
+nemo = "p0"
+
+if nemo =="p0":
+    print("大额")
+elif nemo  == "p1":
+    print("常规")
+else:
+    print("小额")  
+
+print(f"nemo>= 100万：{test_amounts[0]} → 大额")
+print(f"nemo>=1万：<{test_amounts[1]} → 常规")
+print(f"nemo<1万：{test_amounts[2]} → 小额")
+
 
 
 # 【2】遍历 ledger，把所有「进行中」的事项名称打印出来（只打事项，不打编号）。
@@ -147,6 +160,8 @@ test_amounts = [2000000, 50000, 3000]
 
 
 # 【3】统计 ledger 里「进行中」的记录有几条，打印数量。
+#      提示：这一题是「先建 X，再用 Y」型——计数用的变量要在循环开始之前先建好，
+#            不要等到循环里才想起它。
 
 # 你的代码 ↓
 
