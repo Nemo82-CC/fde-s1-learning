@@ -53,7 +53,7 @@ for i in range(len(ledger)):
 # 更 Python 的写法：enumerate 直接拿到序号和内容
 print("--- enumerate 写法 ---")
 for i, row in enumerate(ledger, start=1):        #“for i,row”表明的是「每一轮循环要拿到两个东西：序号 i 和内容 row」；“start=1”表示序号从 1 开始（默认是 0）。
-    print(f" {i}. {row['编号']}")
+    print(f" {i}. {row['编号']}")        #"."这是一个符号，可以用逗号、顿号，或者其他你喜欢的符号，比如@
 
 # 只遍历字典的键
 print("--- 遍历字典 ---")
@@ -67,7 +67,7 @@ print("【3】for + if：筛选（最常用的组合）")
 doing = []         ##就是「先建一个空列表」,[]表示空列表;doing 这个名字必须在循环之前就建好
 for row in ledger:
     if row["状态"] == "进行中":
-        doing.append(row["编号"])
+        doing.append(row["编号"])       #将符合条件的编号加入到 doing 列表里，doing.append() 是列表的一个方法，意思是「在列表末尾追加一个元素」。
 print(f"进行中：{doing}")
 
 # 等效的「列表推导式」写法，一行搞定
@@ -139,24 +139,29 @@ print("练习开始，共 5 题")
 test_amounts = [2000000, 50000, 3000]
 
 # 你的代码 ↓
-nemo = "p0"
 
-if nemo =="p0":
-    print("大额")
-elif nemo  == "p1":
-    print("常规")
-else:
-    print("小额")  
 
-print(f"nemo>= 100万：{test_amounts[0]} → 大额")
-print(f"nemo>=1万：<{test_amounts[1]} → 常规")
-print(f"nemo<1万：{test_amounts[2]} → 小额")
+for nemo in test_amounts:
+    if nemo>=1000000:
+        print(f"{nemo}->大额")
+    elif 10000<=nemo<1000000:
+        print(f"{nemo}->常规")
+    else:
+        print(f"{nemo}->小额")
+
+
 
 
 
 # 【2】遍历 ledger，把所有「进行中」的事项名称打印出来（只打事项，不打编号）。
 
 # 你的代码 ↓
+for row in ledger:                 #for + if 的组合是最常用的
+    if row["状态"]=="进行中":
+        print(row["事项"])
+
+
+
 
 
 # 【3】统计 ledger 里「进行中」的记录有几条，打印数量。
@@ -165,10 +170,26 @@ print(f"nemo<1万：{test_amounts[2]} → 小额")
 
 # 你的代码 ↓
 
+n=0
+for row in ledger:
+    if row["状态"]=="进行中":
+        n+=1
+print(f"进行中的记录数：{n}")
+
+
+
+
 
 # 【4】用 while 循环打印 1 到 5（每个数字占一行）。
 
 # 你的代码 ↓
+
+n=1
+while n<=5:       
+    print(n)
+    n=n+1         #必须要加，要不然进入死循环，while 后面的条件永远为真。n<=5设定了循环的条件，n每次加1，直到大于5才会跳出循环。
+
+
 
 
 # 【5】下面的列表里混了不能转成数字的脏数据，
@@ -177,6 +198,18 @@ print(f"nemo<1万：{test_amounts[2]} → 小额")
 raw = ["1200", "800", "未知", "3500", ""]
 
 # 你的代码 ↓
+
+good = []                    #建立一个空列表，用来存放能转换的数字
+for n in raw:                #要求放进新列表，所以需要建立一个空列表，需要用到课里将的doing[]
+    try:
+        n=int(n)
+        good.append(n)       #将能转换的数字加入到 good 列表里。append英文意思是增补、附加；
+        print(f"{n} 转换成功")
+    except ValueError:
+        print(f"{n} 转换失败，跳过")
+print(f"转换成功的数字列表：{good}")
+
+
 
 
 print("练习结束")
