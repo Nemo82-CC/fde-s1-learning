@@ -135,7 +135,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-# 为什么要这四行？
+# 为什么要这两行？（起作用的就是 if 判断那行 + main() 调用那行，别去凑"四行"）
 #   别人 import 你的文件时，不应该顺手跑一遍主流程。
 #   __name__ == "__main__" 表示「这个文件是被直接运行的」，此时才跑 main()。
 
@@ -152,12 +152,26 @@ print("练习开始，共 4 题")
 # 【1】写一个函数 greet(name)，返回字符串「你好，{name}！」。用两个不同的名字各调用一次。
 
 # 你的代码 ↓
+def greet(name):
+    return(f"你好，{name}！")
+
+print(greet("陈驰"))
+print(greet("hcky"))
 
 
 # 【2】写一个函数 is_overdue(days)，参数 days 是已逾期天数：
 #      days > 0 返回 True，否则返回 False。用 3 和 0 各测一次。
 
 # 你的代码 ↓
+def is_overdue(days):
+    if days > 0:
+        return True
+    else:
+        return False
+
+print(is_overdue(3))
+print(is_overdue(0))
+
 
 
 # 【3】写一个函数 pick_by_status(rows, status="进行中")，
@@ -165,12 +179,28 @@ print("练习开始，共 4 题")
 #      用 ledger 调用两次：一次默认，一次传 "已闭环"。
 
 # 你的代码 ↓
+def pick_by_status(rows, status="进行中"):
+    result = []
+    for row in rows:
+        if row["状态"]== status:
+            result.append(row.get("事项", row["编号"]))
+    return result
+
+print(pick_by_status(ledger))
+print(pick_by_status(ledger, "已闭环"))
 
 
 # 【4】把「练习 1 和练习 2 的函数」放进一个 main2() 里调用，
 #      并用 if __name__ == "__main__": 的方式运行它。
 
 # 你的代码 ↓
+def main2():
+    print(greet("陈驰"))
+    print(is_overdue(3))
+    print(is_overdue(0))
+
+if __name__ == "__main__":
+    main2()
 
 
 print("练习结束")
