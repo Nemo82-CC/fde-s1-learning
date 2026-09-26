@@ -23,6 +23,7 @@ data/raw/
 data/*.csv
 data/*.xlsx
 logs/*.log
+output/
 
 # 系统
 .DS_Store
